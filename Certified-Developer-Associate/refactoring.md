@@ -1,5 +1,12 @@
 # Notes on Refactoring
 
+## CloudWatch Alarms
+
+* A CloudWatch alarm state is configured with three settings:
+  - Period (s): The length of time to evaluate the metric to create each individual data point for a metric.
+  - Evaluation Period: The number of the most recent data points to evaluate when determining alarm state.
+  - Datapoints to Alarm: The number of data points within the Evaluation Period that must be breached to cause an alarm state.
+
 ## Managing Session State
 
 There are two options to managing session state
@@ -37,3 +44,11 @@ There are two options to managing session state
 * Memcached:
   - Simple caching model
   - Supports multi-threading: Can handle more operations with increased compute capacity
+
+## RDS
+
+* Read replicas allow for enhanced performance and durability for read-intensive workloads
+  - Read replicas can be promoted to master status, useful as part of a sharding implementation
+  - You can add indexes to just the read replicas for increased performance
+  - A read replica can be in a standby AZ and promoted if the master DB fails
+  - The traffic between the main and read replicas is automatically encrypted
